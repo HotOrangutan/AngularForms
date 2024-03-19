@@ -1,0 +1,58 @@
+<form (ngSubmit)="addUser()">
+  <div class="pole">
+      <label>Imie:</label>
+      <input placeholder="Imie racza" type="text" name="name" id="name" [(ngModel)]="name"/>
+  </div>
+ <div class="pole">
+  <label>Nazwisko:</label>
+  <input placeholder="Nazwisko gracza" type="text" name="surname" id="surname" [(ngModel)]="surname"/>
+  </div>
+  <div class="pole">
+<label>Podaj nick gracza:</label>
+  <input required placeholder="Nick w grze" type="text" name="nick" id="nick" [(ngModel)]="nick"/>
+  </div>
+  <div class="pole">
+      <label>Do jakiej gry?</label>
+  <select name="grupa" id="grupa" [(ngModel)]="grupa">
+      <option selected="selected">War Thunder</option>
+      <option>Valorant</option>
+      <option>Star Citizen</option>
+  </select>
+  </div>
+  
+  <input type="submit" value="Dodaj"/>
+</form>
+
+  <div class="tables">
+
+    <div *ngFor="let gracz of gry; index as i;">
+        <h2>Gracze {{gracz.name}}</h2>
+        <table class="c_table">
+            <tr class="tr_bold">
+                <th>l.p.</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Nick</th>
+                <th>Opcje</th>
+            </tr>
+            <tr *ngFor="let user of gracz.players" class="tr_u tr-{{user.id}}">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.surname}}</td>
+                <td>{{user.nickname}}</td>
+                <div class="actions">
+                    <button (click)="removePerson(user.id,gry[i].name)" id="">
+                        Usuń
+                    </button>
+                    <button (click)="editPerson(user.id,gry[i].name)">
+                        Edytuj
+                    </button>
+                </div>
+            </tr>
+        </table>
+    </div>
+  </div>
+
+
+
+

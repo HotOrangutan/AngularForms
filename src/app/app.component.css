@@ -1,0 +1,12 @@
+.tables {
+    border: 2px;
+    border-style: dashed;
+    font-style: oblique;
+    display: flex;
+    flex-direction: row;
+    gap: 3.5em;
+}
+.pole{
+    row-gap: 3.5em;
+    gap: 3.5em;
+}
